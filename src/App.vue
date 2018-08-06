@@ -26,19 +26,11 @@
           <b-list-group>
 
             <!-- item mới sau khi thêm sẽ hiển thị ở đây -->
-            <todoitem :todoItem="item" :todoItems="items" :todoDone="done"/>
+            <todoitems :todoItem="item" :todoItems="items" :todoDone="done"/>
 
           </b-list-group>
         </b-col>
 
-        <!-- <b-col cols="5" class="mx-auto m-shadow">
-          <h1 class="title-wrap">
-            <b-badge class="title">FORM USER</b-badge>
-          </h1>
-          <b-form>
-            <b-form-input id="inputHorizontal"></b-form-input>
-          </b-form>
-        </b-col> -->
       </b-row>
     </b-container>
   </div>
@@ -46,7 +38,7 @@
 <script>
   // import HelloWorld from './components/HelloWorld.vue'
   // import TodoApp from './components/todo-app.vue';
-  import todoitem from './components/todo-item.vue';
+  import todoitems from './components/todo-items.vue';
   import Vue from 'vue'
   import BootstrapVue from "bootstrap-vue"
   import "bootstrap/dist/css/bootstrap.min.css"
@@ -57,7 +49,7 @@
   export default {
     name: 'app',
     components: {
-      todoitem
+      todoitems
     },
     data: function () {
       return {
@@ -83,9 +75,10 @@
       deleteAll: function () {
         this.items = [];
         this.done = [];
-      },
+      }
+    },
 
-    }
+    
   }
 </script>
 

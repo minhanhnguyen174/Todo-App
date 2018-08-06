@@ -26,7 +26,6 @@
       
     },
     methods: {
-
       deleteTask: function (e) {
         this.todoItems.splice(this.todoItems.indexOf(e), 1);
 

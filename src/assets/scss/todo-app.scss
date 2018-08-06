@@ -1,0 +1,19 @@
+.app-container {  
+  // background: linear-gradient(to right, #1e3c72, #2a5298);
+  .m-shadow {
+    box-shadow:0 0 10px rgba(192, 192, 192, 0.5);
+    padding: 2em;
+    max-height: 500px;
+    overflow: scroll;
+    &::-webkit-scrollbar {
+      visibility: hidden;
+    }
+  }
+}
+.title {
+  color: #007bff;
+  background: #fff;
+  &-wrap {
+    text-align: center;
+  }
+}

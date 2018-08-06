@@ -12,7 +12,7 @@
             <h5>You have
               <strong>{{done.length}}/{{items.length}}</strong> uncompleted.</h5>
           </div>
-            
+
           <b-input-group v-for="size in ['']" :key="size" :size="size" class="mb-2">
             <b-form-input v-model="newTask" />
             <b-input-group-append>
@@ -26,7 +26,7 @@
           <b-list-group>
 
             <!-- item mới sau khi thêm sẽ hiển thị ở đây -->
-            <todoitems :todoItem="item" :todoItems="items" :todoDone="done"/>
+            <todoitems :todoItem="item" :todoItems="items" :todoDone="done" />
 
           </b-list-group>
         </b-col>
@@ -43,8 +43,13 @@
   import BootstrapVue from "bootstrap-vue"
   import "bootstrap/dist/css/bootstrap.min.css"
   import "bootstrap-vue/dist/bootstrap-vue.css"
+  import VueLocalStorage from 'vue-localstorage'
 
   Vue.use(BootstrapVue)
+  Vue.use(VueLocalStorage, {
+    name: 'ls',
+    bind: true
+  })
 
   export default {
     name: 'app',
@@ -58,6 +63,25 @@
         done: []
       }
     },
+
+    mounted() {
+
+      if (localStorage.getItem('items')) {
+        try {
+          this.items = JSON.parse(localStorage.getItem('items'));
+        } catch (e) {
+          localStorage.removeItem('items');
+        }
+      }
+
+      if (localStorage.getItem('doneList')) {
+        try {
+          this.done = JSON.parse(localStorage.getItem('doneList'));
+        } catch (e) {
+          localStorage.removeItem('doneList');
+        }
+      }
+    },
     methods: {
       addTask: function () {
         if (this.newTask != "") {
@@ -68,6 +92,9 @@
             edit: false
           });
           this.newTask = "";
+
+          let parsed = JSON.stringify(this.items);
+          localStorage.setItem('items', parsed);
         } else
           alert("Please type your task :)")
       },
@@ -78,7 +105,7 @@
       }
     },
 
-    
+
   }
 </script>
 

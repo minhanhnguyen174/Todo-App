@@ -31,8 +31,12 @@
 
         var doneList = this.todoDone;
         if (doneList.length > 0 && e.checked == true)
-          doneList.splice(doneList.indexOf(e), 1)
+          doneList.splice(doneList.indexOf(e), 1);
+
+        let parsed = JSON.stringify(this.todoItems);
+        localStorage.setItem('items', parsed);
       },
+
 
       doneTask: function (e) {
         if (e.checked == false)
@@ -43,6 +47,10 @@
           });
         else
           this.todoDone.splice(this.todoDone.indexOf(e), 1);
+
+        let parsed = JSON.stringify(this.todoDone);
+        localStorage.setItem('doneList', parsed);
+
       },
 
       editTask: function (todoItem) {

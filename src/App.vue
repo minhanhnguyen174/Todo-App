@@ -61,7 +61,7 @@
     },
     data: function () {
       return {
-        items: [{id: 1, name: 'abc', checked: false, edit: false }],
+        items: [],
         newTask: "",
         done: []
       }
